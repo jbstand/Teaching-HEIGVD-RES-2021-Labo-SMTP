@@ -39,7 +39,7 @@ You may work in teams of 2 students.
 
 ## Deliverables
 
-You will deliver the results of your lab in a GitHub repository. You do not have a fork a specific repo, you can create one from scratch.
+You will deliver the results of your lab in a GitHub repository. You do not have to fork a specific repo, you can create one from scratch.
 
 Your repository should contain both the source code of your Java project and your report. Your report should be a single `README.md` file, located at the root of your repository. The images should be placed in a `figures` directory.
 
