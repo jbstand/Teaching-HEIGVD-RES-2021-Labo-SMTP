@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SMTPClient" />
+        <module name="SMTPrank" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SMTPClient" target="11" />
+      <module name="SMTPrank" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

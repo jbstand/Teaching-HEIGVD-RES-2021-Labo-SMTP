@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SMTPClient/SMTPClient.iml" filepath="$PROJECT_DIR$/SMTPClient/SMTPClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SMTPrank/SMTPrank.iml" filepath="$PROJECT_DIR$/SMTPrank/SMTPrank.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Teaching-HEIGVD-RES-2021-Labo-SMTP.iml" filepath="$PROJECT_DIR$/.idea/Teaching-HEIGVD-RES-2021-Labo-SMTP.iml" />
     </modules>
   </component>

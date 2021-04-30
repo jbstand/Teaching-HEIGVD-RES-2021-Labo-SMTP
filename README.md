@@ -26,7 +26,7 @@ Your mission is to develop a client application that automatically plays pranks 
 ## Constraints
 
 - The goal is for you to work at the wire protocol level (with the Socket API). Therefore, you CANNOT use a library that takes care of the protocol details. You have to work with the input and output streams.
-- The program must be configurable: the addresses, groups, messages CANNOT be hard-coded in the program and MUST be managed in config files.
+- The program must be configurable: the addresses, groups, messages CANNOT be hard-coded in the program and MUST be managed in ch.heigvd.MelMot.config files.
 
 
 ## Example
