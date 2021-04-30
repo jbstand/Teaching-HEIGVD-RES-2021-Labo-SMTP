@@ -63,11 +63,11 @@ public class SMTPClient {
 
 
         StringBuilder message = new StringBuilder();
-        message.append("from: <").append(mail.getFrom()).append(">").append(EOL);
-        message.append("to: ").append(serialiseTos(mail.getTo())).append(EOL);
-        message.append("date: ").append(new Date()).append(EOL);
-        message.append("subject: ").append(mail.getSubject()).append(EOL);
-        message.append("body: ").append(EOL).append(mail.getBody()).append(EOL);
+        message.append("Date: ").append(new Date()).append(EOL);
+        message.append("From: <").append(mail.getFrom()).append(">").append(EOL);
+        message.append("Subject: ").append(mail.getSubject()).append(EOL);
+        message.append("To: ").append(serialiseTos(mail.getTo())).append(EOL);
+        message.append("Body: ").append(EOL).append(mail.getBody()).append(EOL).append(EOL);
         message.append(".").append(EOL);
 
         System.out.print("Send : " + message);
@@ -86,13 +86,11 @@ public class SMTPClient {
 
     private String serialiseTos(List<String> tos){
         StringBuilder msg = new StringBuilder();
-        msg.append("<");
         for(int i = 0; i < tos.size(); ++i){
-            msg.append(tos.get(i));
+            msg.append("<").append(tos.get(i)).append(">");
             if(i < tos.size() - 1)
-                msg.append(",");
+                msg.append(", ");
         }
-        msg.append(">");
         return msg.toString();
     }
 
