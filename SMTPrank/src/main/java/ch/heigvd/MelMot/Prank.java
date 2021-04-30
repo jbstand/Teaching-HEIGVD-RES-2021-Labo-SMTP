@@ -1,6 +1,7 @@
 package ch.heigvd.MelMot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Prank {
@@ -11,7 +12,21 @@ public class Prank {
 
     public Mail generateMail(){
         Mail mail = new Mail();
-        mail.setBody(this.message + "\r\n" + this.victimSender.getFirstName());
+        List<String> parsedBody = Arrays.asList(this.message.split("\r\n"));
+        if(parsedBody.get(0).contains("subject:")){
+            String subjectLine = parsedBody.get(0);
+            mail.setSubject(subjectLine.split(":")[1]);
+            StringBuilder newBody = new StringBuilder();
+            for(String line : parsedBody){
+                if(line != subjectLine){
+                    newBody.append(line).append("\r\n");
+                }
+            }
+            mail.setBody(newBody.toString());
+        }else{
+            System.out.print("No subject found...");
+            mail.setBody(this.message + "\r\n" + this.victimSender.getFirstName());
+        }
         List<String> addrList = new ArrayList<>();
         for(Person p : victimRecipients)
             addrList.add(p.getAddress());

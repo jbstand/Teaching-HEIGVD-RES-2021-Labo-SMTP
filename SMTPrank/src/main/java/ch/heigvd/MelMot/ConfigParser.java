@@ -80,11 +80,11 @@ public class ConfigParser {
     }
 
     public int getServerPort(){
-        return (int)this.props.get("smtpServerPort");
+        return Integer.parseInt(this.props.get("smtpServerPort").toString());
     }
 
     public int getNbGroups() {
-        return (int) this.props.get("nbOfGroups");
+        return Integer.parseInt(this.props.get("nbOfGroups").toString());
     }
 
     public List<Person> getWitnesses(){

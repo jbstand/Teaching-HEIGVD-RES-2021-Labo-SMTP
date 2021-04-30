@@ -18,7 +18,7 @@ public class PrankGenerator {
         List<Person> victims = this.config.getVictims();
         int numberOfVictims = victims.size();
         // Contrainte 2 victimes minimum par group
-        if(numberOfVictims / numberOfGroups > 2){
+        if((numberOfVictims / numberOfGroups) < 2){
             System.out.print("Not enough victims to generate " + numberOfGroups);
             System.out.print(" Groups, generating : " + numberOfVictims / 2);
             numberOfGroups = numberOfVictims / 2;
@@ -39,7 +39,7 @@ public class PrankGenerator {
         return pranks;
     }
 
-    public List<Group> generateGroups(List<Person> victims, int numberOfGroups){
+    private List<Group> generateGroups(List<Person> victims, int numberOfGroups){
         List<Person> victimsLeft = new ArrayList<>(victims);
         Collections.shuffle(victimsLeft);
         List<Group> groups = new ArrayList<>();

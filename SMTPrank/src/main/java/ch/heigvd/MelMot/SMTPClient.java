@@ -16,8 +16,9 @@ public class SMTPClient {
     private String commonSeparator = " ";
     final private String EOL = "\r\n";
 
-    public SMTPClient(String url, int port) throws IOException {
-        this.socket = new Socket(url,port);
+    public SMTPClient() throws IOException {
+        ConfigParser config = new ConfigParser();
+        this.socket = new Socket(config.getServerAddress(), config.getServerPort());
         this.out = new PrintWriter(this.socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
     }
@@ -98,7 +99,7 @@ public class SMTPClient {
 
     public static void main(String[] args) {
         try{
-            SMTPClient smtp = new SMTPClient("localhost", 8888);
+            SMTPClient smtp = new SMTPClient();
             smtp.startConnection();
 
             Mail mail = new Mail();
