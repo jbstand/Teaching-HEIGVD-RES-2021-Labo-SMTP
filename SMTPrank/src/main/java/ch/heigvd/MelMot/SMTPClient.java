@@ -42,12 +42,15 @@ public class SMTPClient {
         String response = this.in.readLine();
         System.out.println("Recieved: " + response);
 
-        msg = "rcpt to: <" + serialiseTos(mail.getTo()) + ">" + EOL;
-        System.out.print("Send : " + msg);
-        this.out.print(msg);
-        this.out.flush();
-        response = this.in.readLine();
-        System.out.println("Received : " + response);
+        for(String to : mail.getTo()){
+            msg = "rcpt to: <" + to + ">" + EOL;
+            System.out.print("Send : " + msg);
+            this.out.print(msg);
+            this.out.flush();
+            response = this.in.readLine();
+            System.out.println("Received : " + response);
+        }
+
 
 
         msg = "data" + EOL;
@@ -73,12 +76,25 @@ public class SMTPClient {
         System.out.println("Received : " + response);
     }
 
+    public void quit() throws IOException {
+        String msg = "QUIT" + EOL;
+        this.out.print(msg);
+        this.out.flush();
+        System.out.println("The connection is now closed...");
+    }
+
     private String serialiseTos(List<String> tos){
         StringBuilder msg = new StringBuilder();
-        for(String to : tos)
-            msg.append("<").append(to).append(">");
+        msg.append("<");
+        for(int i = 0; i < tos.size(); ++i){
+            msg.append(tos.get(i));
+            if(i < tos.size() - 1)
+                msg.append(",");
+        }
+        msg.append(">");
         return msg.toString();
     }
+
 
     public static void main(String[] args) {
         try{
@@ -88,6 +104,8 @@ public class SMTPClient {
             Mail mail = new Mail();
             List<String> tos = new ArrayList<>();
             tos.add("jeremie.melly@hes-so.ch");
+            tos.add("alex_mottier@hotmail.com");
+
             mail.setFrom("alexandre.mottier@hes-so.ch");
             mail.setTo(tos);
             mail.setSubject("Test3");
@@ -98,8 +116,5 @@ public class SMTPClient {
         catch (IOException | InterruptedException e){
             System.out.println(e);
         }
-
-
     }
-
 }
