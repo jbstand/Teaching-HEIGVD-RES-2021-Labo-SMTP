@@ -37,16 +37,16 @@ public class Prank {
         return new ArrayList<>(victimRecipients);
     }
 
-    public void setVictimRecipients(Person victimRecipient) {
-        this.victimRecipients.add(victimRecipient);
+    public void setVictimRecipients(List<Person> victimRecipient) {
+        this.victimRecipients = victimRecipient;
     }
 
     public List<Person> getWitnessesRecipients() {
         return new ArrayList<>(witnessesRecipients);
     }
 
-    public void setWitnessesRecipients(Person witnessesRecipient) {
-        this.witnessesRecipients.add(witnessesRecipient);
+    public void setWitnessesRecipients(List<Person> witnessesRecipient) {
+        this.witnessesRecipients = witnessesRecipient;
     }
 
     public String getMessage() {
