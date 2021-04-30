@@ -11,6 +11,17 @@ public class Prank {
 
     public Mail generateMail(){
         Mail mail = new Mail();
+        mail.setBody(this.message + "\r\n" + this.victimSender.getFirstName());
+        List<String> addrList = new ArrayList<>();
+        for(Person p : victimRecipients)
+            addrList.add(p.getAddress());
+        mail.setTo(addrList);
+        addrList = new ArrayList<>();
+        for(Person p : witnessesRecipients){
+            addrList.add(p.getAddress());
+        }
+        mail.setCc(addrList);
+        mail.setFrom(victimSender.getAddress());
         return mail;
     }
 
@@ -23,19 +34,19 @@ public class Prank {
     }
 
     public List<Person> getVictimRecipients() {
-        return victimRecipients;
+        return new ArrayList<>(victimRecipients);
     }
 
-    public void setVictimRecipients(List<Person> victimRecipients) {
-        this.victimRecipients = victimRecipients;
+    public void setVictimRecipients(Person victimRecipient) {
+        this.victimRecipients.add(victimRecipient);
     }
 
     public List<Person> getWitnessesRecipients() {
-        return witnessesRecipients;
+        return new ArrayList<>(witnessesRecipients);
     }
 
-    public void setWitnessesRecipients(List<Person> witnessesRecipients) {
-        this.witnessesRecipients = witnessesRecipients;
+    public void setWitnessesRecipients(Person witnessesRecipient) {
+        this.witnessesRecipients.add(witnessesRecipient);
     }
 
     public String getMessage() {

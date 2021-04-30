@@ -3,15 +3,25 @@ package ch.heigvd.MelMot;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class ConfigParser {
     Properties props;
-    public ConfigParser(String file_name){
+    private static final String config_file = "config.properties";
+    private static final String messages_file = "messages.utf8";
+    private static final String victims_file = "victims.utf8";
+    private List<String> messages = new ArrayList<>();
+    private List<String> victims = new ArrayList<>();
+
+    public ConfigParser(){
+        // Config File
+        String path;
+        InputStream file = null;
         try{
-            String path = this.getClass().getClassLoader().getResource(file_name).getPath();
-            System.out.println(path);
-            InputStream file = new FileInputStream(path);
+            path = this.getClass().getClassLoader().getResource(config_file).getPath();
+            file = new FileInputStream(path);
             this.props = new Properties();
             this.props.load(file);
         }catch(FileNotFoundException e){
@@ -19,14 +29,74 @@ public class ConfigParser {
         }catch(IOException e){
             System.out.println("File not readable");
         }
+        // Messages File
+        try {
+            path = this.getClass().getClassLoader().getResource(messages_file).getPath();
+            file = new FileInputStream(path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedReader reader = new BufferedReader(new InputStreamReader(file));
+        String line;
+        String message = "";
+        try {
+            while ((line = reader.readLine()) != null) {
+                if(line.contains("===")){
+                    messages.add(message);
+                    message = "";
+                }else {
+                    message += line + "\r\n";
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Victims File
+        try {
+            path = this.getClass().getClassLoader().getResource(victims_file).getPath();
+            file = new FileInputStream(path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        reader = new BufferedReader(new InputStreamReader(file));
+        try {
+            while ((line = reader.readLine()) != null) {
+                if(line.contains("@")){
+                    victims.add(line);
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
-        ConfigParser parser = new ConfigParser("config.properties");
-        parser.getProperties("witnessesToCC");
+        new ConfigParser();
     }
 
-    public void getProperties(String properties_name){
-        System.out.println(this.props.get(properties_name));
+    public String getServerAddress(){
+        return this.props.get("smtpServerAddress").toString();
+    }
+
+    public int getServerPort(){
+        return (int)this.props.get("smtpServerPort");
+    }
+
+    public int getNbGroups() {
+        return (int) this.props.get("nbOfGroups");
+    }
+
+    public String getWitness(){
+        return this.props.get("witnessToCC").toString();
+    }
+
+    public List<String> getMessages(){
+        return messages;
+    }
+
+    public List<String> getVictims(){
+        return victims;
     }
 }
