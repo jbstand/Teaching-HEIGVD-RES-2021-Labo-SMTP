@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class SMTPClient {
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
-    final private String splitChar = " ";
+    private String commonSeparator = " ";
     final private String EOL = " \r\n";
 
     public SMTPClient(String url, int port) throws IOException {
@@ -28,8 +27,15 @@ public class SMTPClient {
         this.out.print(msg);
         this.out.flush();
         String response = "";
-        for(int i = 0; i < 4; ++i){
+        while((response = this.in.readLine()) != null){
+//            String[] message = response.split(commonSeparator);
             System.out.println("Recieved: " + response);
+            switch(response){
+                case "250 Ok":
+                    System.out.print("Connection opened...");
+
+            }
+
         }
     }
 
