@@ -1,9 +1,8 @@
 package ch.heigvd.MelMot;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -88,15 +87,32 @@ public class ConfigParser {
         return (int) this.props.get("nbOfGroups");
     }
 
-    public String getWitness(){
-        return this.props.get("witnessToCC").toString();
+    public List<Person> getWitnesses(){
+        return stringToPerson(Arrays.asList(this.props.get("witnessesToCC").toString().split(",")));
     }
 
     public List<String> getMessages(){
         return messages;
     }
 
-    public List<String> getVictims(){
-        return victims;
+    public List<Person> getVictims(){
+        return stringToPerson(this.victims);
+    }
+
+    private static List<Person> stringToPerson(List<String> strPerson){
+        List<Person> result = new ArrayList<>();
+        for(String person : strPerson) {
+            Person p = new Person(person);
+            String prefix = person.split("@")[0];
+            if (prefix.contains(".")) {
+                String[] prefix_split = prefix.split("\\.");
+                p.setFirstName(prefix_split[0]);
+                p.setLastName(prefix_split[1]);
+            } else {
+                p.setFirstName(prefix);
+            }
+            result.add(p);
+        }
+        return result;
     }
 }
