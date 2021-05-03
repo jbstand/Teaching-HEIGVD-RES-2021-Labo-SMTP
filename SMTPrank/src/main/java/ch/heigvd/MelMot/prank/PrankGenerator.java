@@ -1,16 +1,34 @@
-package ch.heigvd.MelMot;
+package ch.heigvd.MelMot.prank;
+
+import ch.heigvd.MelMot.config.ConfigParser;
+import ch.heigvd.MelMot.mail.Group;
+import ch.heigvd.MelMot.mail.Person;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @file PrankGenerator.java
+ * @authors Jérémie Melly & Alexandre Mottier
+ * @date 05.03.2021
+ *
+ * @description Cette classe permet la génération de prank et de groupes liés aux pranks
+ */
 public class PrankGenerator {
+
+    /* Attribut */
     ConfigParser config;
 
+    /* Constructor */
     public PrankGenerator(){
         this.config = new ConfigParser();
     }
 
+    /**
+     * Génère une liste de pranks
+     * @return Une liste de pranks
+     */
     public List<Prank> generatePrank(){
         List<Prank> pranks = new ArrayList<>();
         List<String> messages = this.config.getMessages();
@@ -39,6 +57,12 @@ public class PrankGenerator {
         return pranks;
     }
 
+    /**
+     * Génère une liste de groupe de personnes
+     * @param victims Listes des victimes
+     * @param numberOfGroups Nombre de groupe à créer
+     * @return Une liste de groupe
+     */
     private List<Group> generateGroups(List<Person> victims, int numberOfGroups){
         List<Person> victimsLeft = new ArrayList<>(victims);
         Collections.shuffle(victimsLeft);

@@ -1,8 +1,17 @@
-package ch.heigvd.MelMot;
+package ch.heigvd.MelMot.mail;
 
 import java.util.List;
 
+/**
+ * @file Mail.java
+ * @authors Jérémie Melly & Alexandre Mottier
+ * @date 05.03.2021
+ *
+ * @description Cette classe permet la représentation d'un email à envoyer
+ */
 public class Mail {
+
+    /* Attribut */
     private List<String> to;
     private String from;
     private List<String> cc;
@@ -10,6 +19,7 @@ public class Mail {
     private String subject;
     private String body;
 
+    /* Getters & Setters */
     public List<String> getTo() {
         return to;
     }

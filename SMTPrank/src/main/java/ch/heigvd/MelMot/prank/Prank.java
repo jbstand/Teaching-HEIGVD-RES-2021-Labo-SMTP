@@ -1,15 +1,31 @@
-package ch.heigvd.MelMot;
+package ch.heigvd.MelMot.prank;
+
+import ch.heigvd.MelMot.mail.Mail;
+import ch.heigvd.MelMot.mail.Person;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @file Prank.java
+ * @authors Jérémie Melly & Alexandre Mottier
+ * @date 05.03.2021
+ *
+ * @description Cette classe permet la représentation d'un prank
+ */
 public class Prank {
+
+    /* Attributs */
     private Person victimSender;
     private List<Person> victimRecipients = new ArrayList<>();
     private List<Person> witnessesRecipients = new ArrayList<>();
     private String message;
 
+    /**
+     * Genère un mail prank
+     * @return un mail prank
+     */
     public Mail generateMail(){
         Mail mail = new Mail();
         List<String> parsedBody = Arrays.asList(this.message.split("\r\n"));
@@ -40,32 +56,18 @@ public class Prank {
         return mail;
     }
 
-    public Person getVictimSender() {
-        return victimSender;
-    }
 
+    /* Setters */
     public void setVictimSender(Person victimSender) {
         this.victimSender = victimSender;
-    }
-
-    public List<Person> getVictimRecipients() {
-        return new ArrayList<>(victimRecipients);
     }
 
     public void setVictimRecipients(List<Person> victimRecipient) {
         this.victimRecipients = victimRecipient;
     }
 
-    public List<Person> getWitnessesRecipients() {
-        return new ArrayList<>(witnessesRecipients);
-    }
-
     public void setWitnessesRecipients(List<Person> witnessesRecipient) {
         this.witnessesRecipients = witnessesRecipient;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public void setMessage(String message) {
