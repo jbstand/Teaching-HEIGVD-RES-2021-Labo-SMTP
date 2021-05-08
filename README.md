@@ -14,6 +14,18 @@ The application will randomly take the emails you propose and randomly take a me
 
 ## <u>Instructions to set up mock SMTP server</u>
 
+If you want to test our pranking mail solution but aren't confident enough to get live already this section is for you.
+
+We prepared a Docker container running a Mocked SMTP server, this way, all the prank mail you send will remain local and you'll be able to see the result in a nice Web interface (http://localhost:8282).
+
+In order to use this Docker container you'll have to complete the two steps below :
+- Step 1: Build the Docker image :
+  Open a terminal and browse to the MockMock/ folder. Then run "docker build -t yourname/nameoftheimage .". Once completed, the image is ready to be ran.
+- Step 2: Run the Docker image :
+  In the same terminal run : docker run -p 8888:25 -p 8282:80 yourname/nameoftheimage 
+  (Where 8888 is the port configured in config.properties and 8282 is the port you'd like for the web interface)
+
+Once completed, run our solution and open the web interface (http://localhost:8282) to see the prank mail coming in!
 
 
 ## <u>Instructions to configure our tool</u>
