@@ -16,7 +16,7 @@ The application will randomly take the emails you propose and randomly take a me
 
 If you want to test our pranking mail solution but aren't confident enough to get live already this section is for you.
 
-First of all, you'll need Docker installed on your machine. Please install it from <a src="https://www.docker.com/products/docker-desktop">here</a>. 
+First of all, you'll need Docker installed on your machine. Please install it from <a href="https://www.docker.com/products/docker-desktop">here</a>. 
 
 We prepared a Docker container running a Mocked SMTP server, this way, all the prank mail you send will remain local and you'll be able to see the result in a nice Web interface (http://localhost:8282).
 
