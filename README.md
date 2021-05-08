@@ -31,5 +31,4 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
 
 ## <u>Implementation</u>
 
-![UML](figures\uml.jpg)
-
+![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
