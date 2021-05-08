@@ -48,6 +48,10 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
 
  ![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
 
+You can see how the SMTP protocol is used in our application:
+<p align="center">
+  <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/SMTPProtocol.jpg" width="50%;"/>
+</p>
 
 When you start the connection with the server, the following messages are supposed to appear in your console (the client sends the "EHLO" request to the server) :
 
