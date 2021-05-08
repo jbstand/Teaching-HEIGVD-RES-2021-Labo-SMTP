@@ -31,11 +31,15 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
 
 ## <u>Implementation</u>
 
-![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
+
+ ![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
+
 
 When you start the connection with the server, the following messages are supposed to appear in your console (The client sends the EHLO request to the server) :
 
-<img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/ehlo.PNG" style="zoom: 67%;" />
+<p align="center">
+  <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/ehlo.PNG" width="50%;"/>
+</p>
 
 1. The first line represents the device from which I connect to the server and on which SMTP server we are connected
 2. The second line represents the device I use to connect to the server
@@ -44,16 +48,20 @@ When you start the connection with the server, the following messages are suppos
 
 When you send a mail to the server, the following messages are supposed to appear in your console :
 
-<img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/message.PNG" style="zoom:50%;" />
+<p align="center">
+  <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/message.PNG" width="50%;"/>
+</p>
 
-1. The first "send" message represent the client sending the request "MAIL FROM : <mail>", which tells to server who's the sender
-2. The second and third "send" message represent the client sending the request "RCPT TO : <mail>", which tells the server who's the recipient
+1. The first "send" message represent the client sending the request "MAIL FROM : <john.doe@exemple.com>", which tells to server who's the sender
+2. The second and third "send" message represent the client sending the request "RCPT TO : <john.doe@exemple.com>", which tells the server who's the recipient
 3. The fourth "send" message represent the client sending the request "DATA", which tells the server the following messages are the body of the mail. It needs to end with "<CR><LF>.<CR><LF>"
 
 4. Every messages send to the server are followed with the response "250 Ok" which means the server accept what the client sends
 
 #### Server side
 
-<img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/server.PNG" style="zoom:50%;" />
+<p align="center">
+  <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/server.PNG" width="80%;"/>
+</p>
 
 We can see that the mock server intercept all the mails we send.
