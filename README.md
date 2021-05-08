@@ -53,9 +53,13 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
 
 ## <u>Implementation</u>
 
-
+You can see how our application is structured : 
  ![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
 
+You can see how the SMTP protocol is used in our application:
+<p align="center">
+  <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/SMTPProtocol.jpg" width="50%;"/>
+</p>
 
 When you start the connection with the server, the following messages are supposed to appear in your console (the client sends the "EHLO" request to the server) :
 
@@ -76,7 +80,7 @@ When you send a mail to the server, the following messages are supposed to appea
 
 1. The first "send" message represent the client sending the request "MAIL FROM : <john.doe@exemple.com>", which tells to server who's the sender
 2. The second and third "send" message represent the client sending the request "RCPT TO : <john.doe@exemple.com>", which tells the server who's the recipient
-3. The fourth "send" message represent the client sending the request "DATA", which tells the server the following messages are the body of the mail. It needs to end with "<CR><LF>.<CR><LF>"
+3. The fourth "send" message represent the client sending the request "DATA", which tells the server the following messages are the body of the mail. It needs to end with "\<CR\>\<LF\>.\<CR\>\<LF\>"
 
 4. Every messages send to the server are followed with the response "250 Ok" which means the server accept what the client sends
 
