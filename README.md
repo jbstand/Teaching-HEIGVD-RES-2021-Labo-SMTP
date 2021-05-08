@@ -24,7 +24,7 @@ To be able to use our application, you just have to modify three different files
 
 - You can change the application's configuration here : `SMTPrank\src\main\resources\config.properties`
 - You can change the prank messages here : `SMTPrank\src\main\resources\messages.utf8`
-- You can change the list of emails here : `SMTPrank\src\main\resources\victims.utf8`
+- You can change the list of victim's emails here : `SMTPrank\src\main\resources\victims.utf8`
 
 And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/heigvd/MelMot/Main.java`
 
@@ -32,3 +32,28 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
 ## <u>Implementation</u>
 
 ![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
+
+When you start the connection with the server, the following messages are supposed to appear in your console (The client sends the EHLO request to the server) :
+
+<img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/ehlo.PNG" style="zoom: 67%;" />
+
+1. The first line represents the device from which I connect to the server and on which SMTP server we are connected
+2. The second line represents the device I use to connect to the server
+3. The third line tells that the content is  a MIME. encoded content
+4. The fourth line tells us that the server is ready to accept conversation.
+
+When you send a mail to the server, the following messages are supposed to appear in your console :
+
+<img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/message.PNG" style="zoom:50%;" />
+
+1. The first "send" message represent the client sending the request "MAIL FROM : <mail>", which tells to server who's the sender
+2. The second and third "send" message represent the client sending the request "RCPT TO : <mail>", which tells the server who's the recipient
+3. The fourth "send" message represent the client sending the request "DATA", which tells the server the following messages are the body of the mail. It needs to end with "<CR><LF>.<CR><LF>"
+
+4. Every messages send to the server are followed with the response "250 Ok" which means the server accept what the client sends
+
+#### Server side
+
+<img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/server.PNG" style="zoom:50%;" />
+
+We can see that the mock server intercept all the mails we send.
