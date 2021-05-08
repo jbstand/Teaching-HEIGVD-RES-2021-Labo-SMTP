@@ -34,7 +34,7 @@ public class Prank {
             mail.setSubject(subjectLine.split(":")[1]);
             StringBuilder newBody = new StringBuilder();
             for(String line : parsedBody){
-                if(line != subjectLine){
+                if(!line.equals(subjectLine)){
                     newBody.append(line).append("\r\n");
                 }
             }

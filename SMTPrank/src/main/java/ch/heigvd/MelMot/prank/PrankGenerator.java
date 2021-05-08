@@ -19,6 +19,7 @@ public class PrankGenerator {
 
     /* Attribut */
     ConfigParser config;
+    final int MIN_VICTIM = 2;
 
     /* Constructor */
     public PrankGenerator(){
@@ -36,10 +37,10 @@ public class PrankGenerator {
         List<Person> victims = this.config.getVictims();
         int numberOfVictims = victims.size();
         // Contrainte 2 victimes minimum par group
-        if((numberOfVictims / numberOfGroups) < 2){
+        if((numberOfVictims / numberOfGroups) < MIN_VICTIM){
             System.out.print("Not enough victims to generate " + numberOfGroups);
-            System.out.print(" Groups, generating : " + numberOfVictims / 2);
-            numberOfGroups = numberOfVictims / 2;
+            System.out.print(" Groups, generating : " + numberOfVictims / MIN_VICTIM);
+            numberOfGroups = numberOfVictims / MIN_VICTIM;
         }
         int messageIndex = 0;
         for(Group group : generateGroups(victims, numberOfGroups)){
