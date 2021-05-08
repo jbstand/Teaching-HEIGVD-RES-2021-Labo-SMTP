@@ -35,7 +35,7 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
  ![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
 
 
-When you start the connection with the server, the following messages are supposed to appear in your console (The client sends the EHLO request to the server) :
+When you start the connection with the server, the following messages are supposed to appear in your console (the client sends the "EHLO" request to the server) :
 
 <p align="center">
   <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/ehlo.PNG" width="50%;"/>
@@ -57,6 +57,12 @@ When you send a mail to the server, the following messages are supposed to appea
 3. The fourth "send" message represent the client sending the request "DATA", which tells the server the following messages are the body of the mail. It needs to end with "<CR><LF>.<CR><LF>"
 
 4. Every messages send to the server are followed with the response "250 Ok" which means the server accept what the client sends
+
+When you close the connection with the server, the following message is supposed to appear in your console (the client sends the "QUIT" request to the server) :
+
+<p align="center">
+  <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/close.PNG" width="30%;"/>
+</p>
 
 #### Server side
 
