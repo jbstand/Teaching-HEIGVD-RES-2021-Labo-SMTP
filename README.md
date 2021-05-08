@@ -31,5 +31,5 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
 
 ## <u>Implementation</u>
 
-![UML](.\figures\uml.jpg)
+![UML](figures\uml.jpg)
 
