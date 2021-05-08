@@ -87,11 +87,13 @@ public class SMTPClient {
         message.append("From: <").append(mail.getFrom()).append(">").append(EOL);
         message.append("Subject: ").append(mail.getSubject()).append(EOL);
         message.append("To: ").append(serialiseList(mail.getTo())).append(EOL);
-        message.append("Cc: ").append(serialiseList(mail.getCc())).append(EOL);
-        message.append("Bcc: ").append(serialiseList(mail.getBcc())).append(EOL);
+        if(mail.getCc() != null)
+            message.append("Cc: ").append(serialiseList(mail.getCc())).append(EOL);
+        if(mail.getBcc() != null)
+            message.append("Bcc: ").append(serialiseList(mail.getBcc())).append(EOL);
 
         /* Message body */
-        message.append("Body: ").append(EOL).append(mail.getBody()).append(EOL).append(EOL);
+        message.append("Body: ").append(EOL).append(mail.getBody()).append(EOL);
         message.append(".").append(EOL); // End of message for SMTP server
         System.out.print("Send : " + message);
         this.out.print(message);
@@ -114,7 +116,7 @@ public class SMTPClient {
     /**
      * Transform a list to a string
      * @param list list to transform
-     * @return
+     * @return String with all elements of the list
      */
     private String serialiseList(List<String> list){
         StringBuilder msg = new StringBuilder();
