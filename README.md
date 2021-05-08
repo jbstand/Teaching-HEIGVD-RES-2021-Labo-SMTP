@@ -22,9 +22,17 @@ We prepared a Docker container running a Mocked SMTP server, this way, all the p
 
 In order to use this Docker container you'll have to complete the two steps below :
 - Step 1: Build the Docker image :
-  Open a terminal and browse to the MockMock/ folder. Then run "docker build -t yourname/nameoftheimage .". Once completed, the image is ready to be ran.
+  Open a terminal and browse to the MockMock/ folder. Then run :
+  ```console
+  docker build -t yourname/nameoftheimage .
+  ```
+  Once completed, the image is ready to be ran. You should see it popping up in the Docker GUI and will be able to run it from there but don't forget the port mapping. Below is the CLI way to run the image with the correct port mapping.
+  
 - Step 2: Run the Docker image :
-  In the same terminal run : docker run -p 8888:25 -p 8282:80 yourname/nameoftheimage 
+  In the same terminal run : 
+    ```console
+  docker run -p 8888:25 -p 8282:80 yourname/nameoftheimage
+  ```
   (Where 8888 is the port configured in config.properties and 8282 is the port you'd like for the web interface)
 
 Once completed, run our solution and open the web interface (http://localhost:8282) to see the prank mail coming in! Do not worry, none of them is actually sent.
@@ -48,10 +56,6 @@ And then to run the app, you'll need to run the class `SMTP/src/main/java/ch/hei
 
  ![](https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/uml.jpg)
 
-You can see how the SMTP protocol is used in our application:
-<p align="center">
-  <img src="https://github.com/jbstand/Teaching-HEIGVD-RES-2021-Labo-SMTP/blob/main/figures/SMTPProtocol.jpg" width="50%;"/>
-</p>
 
 When you start the connection with the server, the following messages are supposed to appear in your console (the client sends the "EHLO" request to the server) :
 
