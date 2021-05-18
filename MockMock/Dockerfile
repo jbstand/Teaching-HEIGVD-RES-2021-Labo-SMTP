@@ -10,8 +10,8 @@ RUN apt-get update && \
 COPY ./release/MockMock.jar /opt/
 
 # Our application will accept TCP connections on port 8888.
+EXPOSE 80
 EXPOSE 25
-EXPOSE 8282
 
 # Command executed at startup
-CMD ["java", "-jar", "/opt/MockMock.jar", "-p 25"]
+CMD ["java", "-jar", "/opt/MockMock.jar", "-p", "25", "-h", "80"]
